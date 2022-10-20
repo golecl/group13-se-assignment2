@@ -6,9 +6,14 @@
 </head>
 <body>
         <h1>Calculator</h1>
-    <form action="#" th:action="@{/calculator}" th:object="${calculator}" method="post">
-        <p>Equation: <input type="text" th:field="*{input}" /></p>
+    <form action="#" th:action="@{/calculator}" method="post">
+        <p>Equation: <label>
+            <input type="text" name = "expression" />
+        </label></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
+
+    <!--/*@thymesVar id="result" type="string"*/-->
+    <p th:text="'Result: ' + ${result}"></p>
 </body>
 </html>

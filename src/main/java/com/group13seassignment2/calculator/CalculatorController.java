@@ -10,17 +10,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CalculatorController {
 
+    private String result = "";
+
+    @PostMapping("/calculator")
+    public String calculatorSubmit(@ModelAttribute Calculator calculator, @RequestParam(name = "expression") String expression) {
+        calculator.setInput(expression);
+        calculator.calculate(calculator.getInput());
+        result = calculator.getResult();
+        return "redirect:/calculator";
+    }
+
     @GetMapping("/calculator")
     public String calculatorForm(Model model) {
-        model.addAttribute("calculator", new Calculator());
+        model.addAttribute("result", result);
         return "CalculatorGUI";
-    }
-    @PostMapping("/calculator")
-    public String calculatorSubmit(@ModelAttribute Calculator calculator, Model model, @RequestParam(name = "input") String input) {
-        calculator.setInput(input);
-        calculator.calculate(calculator.getInput());
-        model.addAttribute("calculator", calculator);
-
-        return "Results";
     }
 }
