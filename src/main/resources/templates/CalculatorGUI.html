@@ -5,6 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p>The Calculator GUI will go here</p>
+        <h1>Calculator</h1>
+    <form action="#" th:action="@{/calculator}" th:object="${calculator}" method="post">
+        <p>Equation: <input type="text" th:field="*{input}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
 </body>
 </html>

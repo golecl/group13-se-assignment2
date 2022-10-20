@@ -8,8 +8,7 @@ public class CalculatorApplication {
     public static void main(String[] args) {
         SpringApplication.run(CalculatorApplication.class, args);
     }
-
-    public static double calculate(String expression){
-        return 0;
-    }
 }
+
+// please do not change anything in this file
+
