@@ -11,8 +11,13 @@ class CalculatorApplicationTests {
     void contextLoads() {
     }
 
+    // Please do not change anything above this comment (other than adding imports), it's essential
+    // for the whole thing to work properly!
+
     @Test
     void testCalculate(){
-        assertEquals(0, CalculatorApplication.calculate("12313"));
+        Calculator testCalculator = new Calculator();
+        testCalculator.calculate("sample input");
+        assertEquals("sample input echoed", testCalculator.getResult());
     }
 }
