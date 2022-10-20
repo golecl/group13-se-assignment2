@@ -1,15 +1,14 @@
 # Group 13!
 ## Initial Setup
-Follow the tutorial on this page:
+1. Clone the repo
+2. Follow the tutorial on this page (Important: The Java version we are using is Java 17):
 https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html#:~:text=To%20set%20JAVA_HOME%2C%20do%20the,Program%20Files%5CJava%5Cjdk1.
-
-### Important:
-The Java version we are using is Java 17
+3. Restart your PC
 
 ### To run the service and check that things are working:
-1. Open up terminal
-2. If in IDE: type in ./mvnw spring-boot:run
-3. If in windows terminal: navigate to repository directory and type in "./mvnw spring-boot:run"
+1. Open up the repo in your IDE
+2. Open up terminal in your IDE
+3. type in ./mvnw spring-boot:run
 4. In your browser go to "http://localhost:8080/calculator"
 
 ##  After Setup
