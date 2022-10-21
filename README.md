@@ -1,5 +1,7 @@
 # Group 13!
 ## Initial Setup
+### You have to have an IDE that explicitly supports Java JDK 17 (Preferably Intellij 2022)
+
 1. Clone the repo
 2. Follow the tutorial on this page (Important: The Java version we are using is Java 17):
 https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html#:~:text=To%20set%20JAVA_HOME%2C%20do%20the,Program%20Files%5CJava%5Cjdk1.
