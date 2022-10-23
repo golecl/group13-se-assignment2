@@ -35,8 +35,14 @@ public class Calculator {
     // IN THE FUTURE: will call the validateInput function, and then run all the calculation functions
     // and then set the result to the answer to the equation (or an error message if input string was invalid)
     public void calculate(String rawInput){
-        String correctInput = validateInput(rawInput);
-        String result = Double.toString(eval(correctInput));
+        String result = "";
+        try {
+            String correctInput = validateInput(rawInput);
+            result = Double.toString(eval(correctInput));
+        }
+        catch (Exception e) {
+            result = e.getMessage();
+        }
 
         // IMPORTANT: the result has to be set at the end of the function, otherwise nothing will show up on the webpage
         setResult(result + " echoed");
