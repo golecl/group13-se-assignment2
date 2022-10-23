@@ -85,12 +85,17 @@ public class Calculator {
     }
 
     private int getPrecedence(String op) {
-        return 0;
+        return switch (op) {
+            case "^" -> 3;
+            case "*", "/" -> 2;
+            case "+", "-" -> 1;
+            default -> 0;
+        };
     }
 
     private Double applyOp(double left, double right, String op) {
         return 0.0;
-    }
+    }z
 
     private String[] getTokens(String correctInput) {
         // replace exp(xxx) with the evaluation and parse parentheses, operators and doubles/Integers
