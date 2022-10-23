@@ -94,8 +94,15 @@ public class Calculator {
     }
 
     private Double applyOp(double left, double right, String op) {
-        return 0.0;
-    }z
+        return switch(op) {
+            case "^" -> Math.pow(left, right);
+            case "*" -> left * right;
+            case "/" -> left / right;
+            case "+" -> left + right;
+            case "-" -> left - right;
+            default -> throw new IllegalStateException("Unexpected value: " + op);
+        };
+    }
 
     private String[] getTokens(String correctInput) {
         // replace exp(xxx) with the evaluation and parse parentheses, operators and doubles/Integers
