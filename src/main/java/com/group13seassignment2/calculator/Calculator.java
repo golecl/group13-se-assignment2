@@ -112,7 +112,14 @@ public class Calculator {
     }
 
     private boolean isNumber(String value) {
-        return false;
+        try {
+            Double.parseDouble(value);
+        }
+        catch (Exception e) {
+            return false;
+        }
+
+        return true;
     }
 
     // getter and setter functions, please do not change these
