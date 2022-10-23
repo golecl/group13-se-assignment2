@@ -56,7 +56,10 @@ public class Calculator {
         // each token is either a string representing an integer/double, an operator, parentheses
         for(String token : tokens) {
             if (isNumber(token)) {
-                nums.push(Double.parseDouble(token));
+                if (token.equals("e")) {
+                    nums.push(Math.E);
+                }
+                else nums.push(Double.parseDouble(token));
             }
             else if (token.equals("(")) {
                 ops.push(token);
@@ -118,6 +121,10 @@ public class Calculator {
     }
 
     private boolean isNumber(String value) {
+        if (value.equals("e")) {
+            return true;
+        }
+
         try {
             Double.parseDouble(value);
         }
