@@ -60,7 +60,7 @@ public class Calculator {
                     boolean failFlag = true;
                     while(charStack.isEmpty() == false){
                         char currChar = (char) charStack.pop();
-                        if(currChar == ')'){
+                        if(currChar == '('){
                             failFlag = false;
                             break;
                         }
