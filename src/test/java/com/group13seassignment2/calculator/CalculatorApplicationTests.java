@@ -17,7 +17,7 @@ class CalculatorApplicationTests {
     @Test
     void testCalculate(){
         Calculator testCalculator = new Calculator();
-        testCalculator.calculate("sample input");
-        assertEquals("sample input echoed", testCalculator.getResult());
+        testCalculator.calculate("2+2");
+        assertEquals("4.0 echoed", testCalculator.getResult());
     }
 }
