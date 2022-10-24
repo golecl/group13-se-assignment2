@@ -46,7 +46,7 @@ public class Calculator {
         }
 
         // IMPORTANT: the result has to be set at the end of the function, otherwise nothing will show up on the webpage
-        setResult(result + " echoed");
+        setResult(result);
     }
 
     private double eval(String correctInput) {
