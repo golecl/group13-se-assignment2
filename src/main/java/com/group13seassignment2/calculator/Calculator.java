@@ -1,5 +1,6 @@
 package com.group13seassignment2.calculator;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 
@@ -49,7 +50,7 @@ public class Calculator {
     }
 
     private double eval(String correctInput) {
-        String[] tokens = getTokens(correctInput);
+        ArrayList<String> tokens = getTokens(correctInput);
         Stack<Double> nums = new Stack<Double>();
         Stack<String> ops = new Stack<String>();
 
@@ -113,9 +114,30 @@ public class Calculator {
         };
     }
 
-    private String[] getTokens(String correctInput) {
-        // replace exp(xxx) with the evaluation and parse parentheses, operators and doubles/Integers
-        String[] tokens = new String[] {""};
+    private ArrayList<String> getTokens(String expr) {
+        ArrayList<String> tokens = new ArrayList<String>();
+        int i = 0;
+        while (i < expr.length()) {
+            if (expr.charAt(i) == '(' || expr.charAt(i) == ')') {
+                tokens.add(Character.toString(expr.charAt(i)));
+            }
+            else if (expr.charAt(i) == 'e') {
+                tokens.add("e");
+                tokens.add("^");
+                i += 2; // move index to the 'p' in "exp"
+            }
+            else if (Character.isDigit(expr.charAt(i)) || expr.charAt(i) == '.') {
+                StringBuilder num = new StringBuilder();
+                while (i < expr.length() && (Character.isDigit(expr.charAt(i)) || expr.charAt(i) == '.')) {
+                    num.append(expr.charAt(i));
+                    i++;
+                }
+                tokens.add(num.toString());
+                i--; // return index to last digit
+            }
+            else tokens.add(Character.toString(expr.charAt(i)));
+            i++;
+        }
 
         return tokens;
     }
