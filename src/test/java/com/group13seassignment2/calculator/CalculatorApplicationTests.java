@@ -16,8 +16,22 @@ class CalculatorApplicationTests {
 
     @Test
     void testCalculate(){
-        Calculator testCalculator = new Calculator();
-        testCalculator.calculate("2+2");
-        assertEquals("4.0 echoed", testCalculator.getResult());
+        Calculator calc = new Calculator();
+        String [][] testValues = {{"6/2*(1+2)","6/(2*(1+2))","3+5*exp(4.2)/(5+7)"},{"9.0","1.0","30.786"}};
+        for(int i = 0; i < testValues[0].length; i++)
+        {
+            String result = unitTestCalc(testValues[0][i], calc);
+            System.out.println(result + "  " + testValues[1][i]);
+            assertEquals(result, testValues[1][i]);
+        }
+        
     }
+
+    String unitTestCalc(String expr, Calculator calc){
+        calc.calculate(expr);
+        return calc.getResult();
+    }
+
+
+
 }
