@@ -20,9 +20,9 @@ public class Calculator {
     // If input is valid then it returns it in whatever format is needed for the calculator functions
     // If input is invalid, it returns an error message
     public String validateInput(String rawInput) throws Exception{
-        String correctInput = rawInput;
+        String correctInput = rawInput.replaceAll("\\s+","");
         String falseInput = "False Input";
-        if(isValidString(rawInput)){
+        if(isValidString(correctInput)){
             return correctInput;
         }
         
@@ -33,7 +33,7 @@ public class Calculator {
     
 
     public boolean isValidString(String inputString){
-        inputString = inputString.replaceAll("\\s+","");
+
         Stack digitStack = new Stack<>();
         Stack charStack = new Stack<>();
         boolean isTrue = true;
