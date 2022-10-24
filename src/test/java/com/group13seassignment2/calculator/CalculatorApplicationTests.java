@@ -26,6 +26,32 @@ class CalculatorApplicationTests {
             assertEquals(result, testValues[1][i]);
         }
         
+    //test for String Validation. These test assume that if the string has whitespace the function will remove them. It also assumes that 
+    //upon an invalid input the error message, "Error: invalid input", will be returned.
+
+    @Test
+    void testIsValidString(){
+        String er = "Error: invalid input";
+        Calculator calc = new Calculator();
+        String [][] testValues ={{"1  +  1", ")4+4(", "3+**8", "hello", "1!", "@", "~", "+" },
+        {"1+1", er, er, er, er,er, er, er}};
+
+        for(int i = 0; i < testValues[0].length; i++)
+        {
+            String validated = unitTestValidString(testValues[0][i], calc);
+            assertEquals(testValues[1][i], validated);
+        }
+
+    }
+
+    String unitTestValidString(String expr, Calculator calc){
+        String validatedString;
+        try {
+            validatedString = calc.validateInput(expr);
+        } catch (Exception e) {
+            validatedString = "Error: invalid input";
+        }
+        return validatedString;
     }
 
     String unitTestCalc(String expr, Calculator calc){
