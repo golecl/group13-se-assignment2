@@ -17,15 +17,14 @@ class CalculatorApplicationTests {
     //Tests for calculate without stringValidation.
  
     @Test
-    void testCalculate(){
+    void testCalculate() {
         Calculator calc = new Calculator();
-        String [][] testValues = {{"6/2*(1+2)","6/(2*(1+2))","4^4","(3+5*8^4.2)/(5+7)"},{"9.0","1.0","256","2587.073"}};
-        for(int i = 0; i < testValues[0].length; i++)
-        {
+        String[][] testValues = {{"6/2*(1+2)", "6/(2*(1+2))", "4^4", "(3+5*8^4.2)/(5+7)"}, {"9.0", "1.0", "256", "2587.073"}};
+        for (int i = 0; i < testValues[0].length; i++) {
             String result = unitTestCalc(testValues[0][i], calc);
             assertEquals(result, testValues[1][i]);
         }
-        
+    }
     //test for String Validation. These test assume that if the string has whitespace the function will remove them. It also assumes that 
     //upon an invalid input the error message, "Error: invalid input", will be returned.
 
