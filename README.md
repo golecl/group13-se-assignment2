@@ -1,5 +1,14 @@
 # Group 13!
-# RUNNING CONTAINERSIED WEB APP
+# RUNNING RELEASE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## How to run Release 1:
+1. Open up docker desktop
+2. Open up terminal:
+   1. Type in "docker pull goleccc/calculator-web-app:release1"
+   2. Once pulled, type in "docker run -d -p 8080:8080 6ea5144a28e2"
+3. Go to http://localhost:8080/calculator in your browser
+
+# SETTING UP CONTAINERISED WEB APP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## THIS ONLY NEEDS TO BE DONE DURING RELEASING
 ## How to set up image and container:
 1. In terminal in your IDE type in: 
    1. ./mvnw clean install spring-boot:run
