@@ -3,8 +3,7 @@
 ## How to run Release 1:
 1. Open up docker desktop
 2. Open up terminal:
-   1. Type in "docker pull goleccc/calculator-web-app:release1"
-   2. Once pulled, type in "docker run -d -p 8080:8080 6ea5144a28e2"
+   1. Type in "docker run --name=calculator-web-app-container --rm -d -p 8080:8080 goleccc/calculator-web-app:release1"
 3. Go to http://localhost:8080/calculator in your browser
 
 # SETTING UP CONTAINERISED WEB APP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
