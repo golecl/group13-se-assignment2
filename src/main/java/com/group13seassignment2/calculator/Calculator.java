@@ -1,5 +1,7 @@
 package com.group13seassignment2.calculator;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -39,7 +41,9 @@ public class Calculator {
         String result = "";
         try {
             String correctInput = validateInput(rawInput);
-            result = Double.toString(eval(correctInput));
+            result = Double.toString(BigDecimal.valueOf(eval(correctInput))
+                    .setScale(3, RoundingMode.HALF_UP)
+                    .doubleValue());
         }
         catch (Exception e) {
             result = e.getMessage();
