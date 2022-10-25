@@ -64,7 +64,7 @@ public class Calculator {
         boolean isTrue = true;
         for(int i = 0;i < inputString.length();i++){
             char currentChar = inputString.charAt(i);
-            if(isNumb(currentChar)){
+            if(isNumber(currentChar)){
                 digitStack.push(currentChar - '0');
                 if(isTrue == true){
                     isTrue = false;
