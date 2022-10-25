@@ -34,11 +34,6 @@ public class Calculator {
             return correctInput; 
         }
     }
-          
-    public String validateInput(String rawInput){
-        String correctInput = rawInput;
-        return correctInput;
-    }
 
     // calculate function
     // Parameters: String rawInput
@@ -74,8 +69,8 @@ public class Calculator {
                 if(isTrue == true){
                     isTrue = false;
                 }
-                else{
-                    return false;
+            else{
+                return false;
                 }
             }
         }
