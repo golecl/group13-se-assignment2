@@ -132,7 +132,7 @@ public class Calculator {
             case "*", "/" -> 2;
             case "+", "-" -> 1;
             default -> 0;
-        }
+        };
     }
 
     private Double applyOp(double left, double right, String op) {
@@ -143,7 +143,7 @@ public class Calculator {
             case "+" -> left + right;
             case "-" -> left - right;
             default -> throw new IllegalStateException("Unexpected value: " + op);
-        }
+        };
     }
 
     private ArrayList<String> getTokens(String expr) {
