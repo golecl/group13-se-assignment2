@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create Jar File
+        run: ./mvnw clean install spring-boot:run
+
       - name: Check Out Repo 
         uses: actions/checkout@v2
 
