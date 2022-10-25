@@ -1,19 +1,25 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Group 13 Calculator - First Release</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-        <h1>Calculator</h1>
-    <form action="#" th:action="@{/calculator}" method="post">
-        <p>Equation: <label>
-            <input type="text" name = "expression" />
-        </label></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
+<h1>Group 13 Calculator - First Release</h1>
+<form action="#" th:action="@{/calculator}" method="post">
+    <p>Equation: <label>
+        <input type="text" name = "expression" />
+    </label></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
 
-    <!--/*@thymesVar id="result" type="string"*/-->
-    <p th:text="'Result: ' + ${result}"></p>
+<!--/*@thymesVar id="result" type="string"*/-->
+<p th:text="'Result: ' + ${result}"></p>
+
+<p>
+    The current version of the calculator supports the following operations:<br>
+    addition (+), subtraction (-), multiplication (*), division (/), indices (^)<br><br>
+    It also supports doubles and parenthesis<br>
+</p>
 </body>
 </html>
