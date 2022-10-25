@@ -31,7 +31,9 @@ public class Calculator {
         
         String falseInput = "False Input";
         if(isValidString(rawInput)){
-            return correctInput;
+            return correctInput; 
+        }
+    }
           
     public String validateInput(String rawInput){
         String correctInput = rawInput;
@@ -74,6 +76,10 @@ public class Calculator {
                 }
                 else{
                     return false;
+                }
+            }
+        }
+    }
 
     private double eval(String correctInput) {
         ArrayList<String> tokens = getTokens(correctInput);
@@ -126,7 +132,7 @@ public class Calculator {
             case "*", "/" -> 2;
             case "+", "-" -> 1;
             default -> 0;
-        };
+        }
     }
 
     private Double applyOp(double left, double right, String op) {
@@ -137,7 +143,7 @@ public class Calculator {
             case "+" -> left + right;
             case "-" -> left - right;
             default -> throw new IllegalStateException("Unexpected value: " + op);
-        };
+        }
     }
 
     private ArrayList<String> getTokens(String expr) {
