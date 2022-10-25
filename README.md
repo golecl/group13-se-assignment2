@@ -1,5 +1,5 @@
 # Group 13!
-# RUNNING RELEASE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# RUNNING RELEASE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## How to run Release 1:
 1. Open up docker desktop
 2. Open up terminal:
