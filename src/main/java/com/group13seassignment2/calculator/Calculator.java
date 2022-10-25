@@ -17,7 +17,6 @@ public class Calculator {
         setInput("");
         setResult("");
     }
-
     // validateInput function
     // Parameters: String rawInput
     // Return: String correctInput
@@ -28,13 +27,97 @@ public class Calculator {
     public String validateInput(String rawInput) throws Exception{
         rawInput = rawInput.replaceAll("\\s+","");
         String correctInput = rawInput;
-        
+
         String falseInput = "False Input";
         if(isValidString(rawInput)){
-            return correctInput; 
+            return correctInput;
         }
+        
+        throw new Exception("Incorrect input");
     }
+       
+       
 
+
+    public boolean isValidString(String inputString){
+        Stack digitStack = new Stack<>();
+        Stack charStack = new Stack<>();
+        boolean isTrue = true;
+        for(int i = 0;i < inputString.length();i++){
+            char currentChar = inputString.charAt(i);
+            if(isNumb(currentChar)){
+                digitStack.push(currentChar - '0');
+                if(isTrue == true){
+                    isTrue = false;
+                }
+                else{
+                    return false;
+                }
+            }
+            else if(isOperator(currentChar)){
+                charStack.push(currentChar);
+                isTrue = true;
+            }
+            else{
+                if(currentChar == '('){
+                    charStack.push(currentChar);
+                }
+                else{
+                    boolean failFlag = true;
+                    while(charStack.isEmpty() == false){
+                        char currChar = (char) charStack.pop();
+                        if(currChar == '('){
+                            failFlag = false;
+                            break;
+                        }
+                        else{
+                            if(digitStack.size() < 2){
+                                return false;
+                            }
+                            else{
+                                digitStack.pop();
+                            }
+                        }
+                    }
+                    if(failFlag == true){
+                        return false;
+                    }
+                }
+            }
+        }
+        while(charStack.isEmpty() == false){
+            char currChar = (char) charStack.pop();
+            if(isOperator(currChar) == false){
+                return false;
+            }
+            if(digitStack.size() < 2){
+                return false;
+            }
+            else{
+                digitStack.pop();
+            }
+        }
+        if(digitStack.size() > 1 || charStack.isEmpty() == false){
+            return false;
+        }
+        return true;
+    }
+  
+    
+    /*checks if the given character is a digit.*/
+    public static boolean isNumb(char numb) {
+        if (numb >= '0' && numb <= '9') {
+            return true;
+        }
+        return false;
+    }
+    public static boolean isOperator(char c) {
+        if ( c == '/' || c == '+' || c == '-' || c == '*' || c == '^') {
+            return true;
+        }
+        return false;
+    }
+    
     // calculate function
     // Parameters: String rawInput
     // Return: nothing
@@ -56,24 +139,6 @@ public class Calculator {
 
         // IMPORTANT: the result has to be set at the end of the function, otherwise nothing will show up on the webpage
         setResult(result);
-    }
-
-    public boolean isValidString(String inputString){
-        Stack digitStack = new Stack<>();
-        Stack charStack = new Stack<>();
-        boolean isTrue = true;
-        for(int i = 0;i < inputString.length();i++){
-            char currentChar = inputString.charAt(i);
-            if(isNumber(currentChar)){
-                digitStack.push(currentChar - '0');
-                if(isTrue == true){
-                    isTrue = false;
-                }
-            else{
-                return false;
-                }
-            }
-        }
     }
 
     private double eval(String correctInput) {
@@ -183,6 +248,7 @@ public class Calculator {
 
         return true;
     }
+
 
     // getter and setter functions, please do not change these
     // also please do not set or get the variables "input" and "string" in any other way
