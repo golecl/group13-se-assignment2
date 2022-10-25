@@ -14,6 +14,11 @@ jobs:
       - name: Check Out Repo 
         uses: actions/checkout@v2
         
+      - name: Set-Up Java SDK
+        uses: actions/setup-java@v1
+        with:
+         java-version: 17
+        
       - name: Create Jar File
         run: ./mvnw clean install spring-boot:run
 
