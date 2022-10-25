@@ -64,6 +64,7 @@ public class Calculator {
                     return false;
                 }
             }
+            }
             else if(isOperator(currentChar)){
                 charStack.push(currentChar);
                 isTrue = true;
