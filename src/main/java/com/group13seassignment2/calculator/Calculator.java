@@ -46,7 +46,17 @@ public class Calculator {
         for(int i = 0;i < inputString.length();i++){
             char currentChar = inputString.charAt(i);
             if(isNumb(currentChar)){
-                digitStack.push(currentChar - '0');
+                if(isFloat(inputString,i)) {
+                	int floatLength = howLongFloat(inputString,i);
+                	double floatNumb = getFloatNumb(inputString,i,i+floatLength);
+                	i = i + floatLength-1;
+                	digitStack.push(floatNumb);
+                }
+                else {
+                	int intLength = howLongInt(inputString,i);
+                	int intNumb = getIntNumb(inputString,i,i+intLength);
+                	i = i + intLength-1;
+                	digitStack.push(intNumb);
                 if(isTrue == true){
                     isTrue = false;
                 }
@@ -117,7 +127,73 @@ public class Calculator {
         }
         return false;
     }
+    public static int howLongInt(String s,int n ) {
+    	int result = 0;
+    	for(int i = n;i < s.length();i++) {
+    		if(isNumb(s.charAt(i))) {
+    			result++;
+    		}
+    		else {
+    			break;
+    		}
+    	}
+    	return result;
+    }
+    public static int getIntNumb(String s,int startIndex,int endIndex) {
+    	String result = s.substring(startIndex,endIndex);
+    	return Integer.parseInt(result);
+    }
     
+    public static boolean isFloat(String s,int n){
+    	boolean result = false;
+    	boolean firstDot = false;
+    	for(int i = n;i < s.length();i++) {
+    		if(isNumb(s.charAt(i)) == false && s.charAt(i) != '.') {
+    			break;
+    		}
+    		else if(isNumb(s.charAt(i))) {
+    			result= true;
+    		}
+    		else if((s.charAt(i) == '.' && firstDot == false && s.charAt(n) != '.')){
+    			firstDot = true;
+    			result= true;
+    		}
+    		else if(isNumb(s.charAt(i)) && firstDot == true) {
+    			result = true;
+    		}
+    		else {
+    			break;
+    		}
+    	}
+    	return result;
+    }
+    public static int howLongFloat(String s,int n ) {
+    	int result = 0;
+    	boolean firstDot = false;
+    	for(int i = n;i < s.length();i++) {
+    		if(isNumb(s.charAt(i)) == false && s.charAt(i) != '.') {
+    			break;
+    		}
+    		else if(isNumb(s.charAt(n))) {
+    			result++;
+    		}
+    		else if((s.charAt(i) == '.' && firstDot == false && s.charAt(n) != '.')){
+    			firstDot = true;
+    			result++;
+    		}
+    		else if(isNumb(s.charAt(i)) && firstDot == true) {
+    			result++;
+    		}
+    		else {
+    			break;
+    		}
+    	}
+    	return result;
+    }
+    public static Double getFloatNumb(String s,int startIndex,int endIndex) {
+    	String result = s.substring(startIndex,endIndex);
+    	return Double.parseDouble(result);
+    }
     // calculate function
     // Parameters: String rawInput
     // Return: nothing
