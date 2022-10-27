@@ -1,4 +1,22 @@
 # Group 13!
+# RUNNING RELEASE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## How to run Release 1:
+1. Open up docker desktop
+2. Open up terminal:
+   1. Type in "docker run --name=calculator-web-app-container --rm -d -p 8080:8080 goleccc/calculator-web-app:release1"
+3. Go to http://localhost:8080/calculator in your browser
+
+# SETTING UP CONTAINERISED WEB APP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## THIS ONLY NEEDS TO BE DONE DURING RELEASING
+## How to set up image and container:
+1. In terminal in your IDE type in: 
+   1. ./mvnw clean install spring-boot:run
+   2. terminate the webapp after successfully built
+   3. docker build -t web-app-calculator-image .
+   4. docker run --name=web-app-calculator-simple-container --rm -d -p 8080:8080 web-app-calculator-image
+2. Go to http://localhost:8080/calculator in your browser
+
+# DEVELOPMENT SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Initial Setup
 ### You have to have an IDE that explicitly supports Java JDK 17 (Preferably Intellij 2022)
 
