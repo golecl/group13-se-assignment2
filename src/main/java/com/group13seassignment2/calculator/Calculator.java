@@ -39,21 +39,13 @@ public class Calculator {
        
 
 
-    public static boolean isValidString(String inputString){
+    public boolean isValidString(String inputString){
         Stack digitStack = new Stack<>();
         Stack charStack = new Stack<>();
         boolean isTrue = true;
         for(int i = 0;i < inputString.length();i++){
             char currentChar = inputString.charAt(i);
-            if(isLog(inputString,i) != 0) {
-            	i = isLog(inputString,i);
-            	digitStack.push("111");
-            }
-            else if(isExp(inputString,i) != 0) {
-            	i = isExp(inputString,i);
-            	digitStack.push("222");
-            }
-            else if(isNumb(currentChar)){
+            if(isNumb(currentChar)){
                 if(isFloat(inputString,i)) {
                 	int floatLength = howLongFloat(inputString,i);
                 	double floatNumb = getFloatNumb(inputString,i,i+floatLength);
@@ -136,76 +128,7 @@ public class Calculator {
         }
         return false;
     }
-    public static int isLog(String s,int n) {
-    	int result = 0;
-    	
-    		if(s.charAt(n) == 'l'){
-    			if(s.charAt(n+1) == 'o'){
-    				if(s.charAt(n+2) == 'g'){
-    					if(s.charAt(n+3) == '('){
-    						int k = findBracket(s,n+4);
-    						String subString = s.substring(n+4,(k));
-    						if(isValidString(subString)) {
-    							n = k;
-    							if(s.charAt(n) == ')') {
-    		    					return n;
-    		    				}
-    						}
-    		    		}
-    					result = 3;
-    	    		}
-    				result = 2;
-        		}
-    			result = 1;
-    		}
-    	
-    	
-    	return result;
-    }
-    public static int findBracket(String s,int n) {
-    	int result = 0;
-    	int bracketCount = 0;
-    	for(int i =n;i<s.length();i++) {
-    		if(s.charAt(i) == '(') {
-    			bracketCount++;
-    		}
-    		if(s.charAt(i) == ')' && bracketCount == 0) {
-    			return i;
-    		}
-    		if(s.charAt(i) == ')' && bracketCount != 0) {
-    			bracketCount--;
-    		}
-    		
-    	}
-    	return result;
-    }
-    public static int isExp(String s,int n) {
-    	int result = 0;
-    	
-    		if(s.charAt(n) == 'e'){
-    			if(s.charAt(n+1) == 'x'){
-    				if(s.charAt(n+2) == 'p'){
-    					if(s.charAt(n+3) == '('){
-    						int k = findBracket(s,n+4);
-    						String subString = s.substring(n+4,(k));
-    						if(isValidString(subString)) {
-    							n = k;
-    							if(s.charAt(n) == ')') {
-    		    					return n;
-    		    				}
-    						}
-    		    		}
-    					
-    					result = 3;
-    	    		}
-    				result = 2;
-        		}
-    			result = 1;
-    		}
-    	
-    	
-    	return result;
-    }
+   
     public static int howLongInt(String s,int n ) {
     	int result = 0;
     	for(int i = n;i < s.length();i++) {
