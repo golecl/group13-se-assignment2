@@ -57,13 +57,14 @@ public class Calculator {
                 	int intNumb = getIntNumb(inputString,i,i+intLength);
                 	i = i + intLength-1;
                 	digitStack.push(intNumb);
+                }
                 if(isTrue == true){
                     isTrue = false;
                 }
                 else{
                     return false;
                 }
-            }
+            
             }
             else if(isOperator(currentChar)){
                 charStack.push(currentChar);
