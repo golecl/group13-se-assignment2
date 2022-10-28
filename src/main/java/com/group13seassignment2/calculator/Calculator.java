@@ -39,7 +39,7 @@ public class Calculator {
        
 
 
-    public boolean isValidString(String inputString){
+    public static boolean isValidString(String inputString){
         Stack digitStack = new Stack<>();
         Stack charStack = new Stack<>();
         boolean isTrue = true;
