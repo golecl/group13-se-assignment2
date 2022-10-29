@@ -264,10 +264,10 @@ public class Calculator {
         double left = nums.pop();
         String op = ops.pop();
         if (right == 0.0 && op.equals("/")) {
-            throw new Exception("Division by zero is not allowed.");
+            throw new Exception("Math Error: division by zero is not defined.");
         }
         if (right <= 0.0 && op.equals("#")) {
-            throw new Exception("log is only valid for positive values.");
+            throw new Exception("Math Error: log is only valid for positive values.");
         }
         nums.push(applyOp(left, right, op));
     }
