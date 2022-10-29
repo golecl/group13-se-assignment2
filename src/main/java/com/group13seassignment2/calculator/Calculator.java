@@ -218,7 +218,7 @@ public class Calculator {
         setResult(result);
     }
 
-    private double eval(String correctInput) {
+    private double eval(String correctInput) throws Exception {
         ArrayList<String> tokens = getTokens(correctInput);
         Stack<Double> nums = new Stack<Double>();
         Stack<String> ops = new Stack<String>();
@@ -256,10 +256,13 @@ public class Calculator {
         return nums.pop();
     }
 
-    private void evaluateStack(Stack<Double> nums, Stack<String> ops) {
+    private void evaluateStack(Stack<Double> nums, Stack<String> ops) throws Exception {
         double right = nums.pop();
         double left = nums.pop();
         String op = ops.pop();
+        if (right == 0.0 && op.equals("/")) {
+            throw new Exception("Division by zero is not allowed.");
+        }
         nums.push(applyOp(left, right, op));
     }
 
