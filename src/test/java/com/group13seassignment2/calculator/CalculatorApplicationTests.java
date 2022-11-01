@@ -36,8 +36,8 @@ class CalculatorApplicationTests {
     void testIsValidString(){
         String er = "Error: invalid input";
         Calculator calc = new Calculator();
-        String [][] testValues ={{"1  +  1", ")4+4(", "3+**8", "hello", "1!", "@", "~", "+" },
-        {"1+1", er, er, er, er,er, er, er}};
+        String [][] testValues ={{"1  +  1", ")4+4(", "3+**8", "hello", "1!", "@", "~", "+", "log( 10)", "exp(2  )"},
+                                 {"1+1",     er,      er,       er,     er,   er,   er,  er,  "log(10)",  "exp(2)"}};
 
         for(int i = 0; i < testValues[0].length; i++)
         {
