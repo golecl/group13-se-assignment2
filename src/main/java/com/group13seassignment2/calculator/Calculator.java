@@ -296,7 +296,7 @@ public class Calculator {
         setResult(result);
     }
 
-    private double eval(String correctInput) {
+    private double eval(String correctInput) throws Exception {
         ArrayList<String> tokens = getTokens(correctInput);
         Stack<Double> nums = new Stack<Double>();
         Stack<String> ops = new Stack<String>();
@@ -306,6 +306,9 @@ public class Calculator {
             if (isNumber(token)) {
                 if (token.equals("e")) {
                     nums.push(Math.E);
+                }
+                else if (token.equals("l")) {
+                    nums.push(1.0);      // dummy value that does not get used
                 }
                 else nums.push(Double.parseDouble(token));
             }
@@ -334,16 +337,22 @@ public class Calculator {
         return nums.pop();
     }
 
-    private void evaluateStack(Stack<Double> nums, Stack<String> ops) {
+    private void evaluateStack(Stack<Double> nums, Stack<String> ops) throws Exception {
         double right = nums.pop();
         double left = nums.pop();
         String op = ops.pop();
+        if (right == 0.0 && op.equals("/")) {
+            throw new Exception("Math Error: division by zero is not defined.");
+        }
+        if (right <= 0.0 && op.equals("#")) {
+            throw new Exception("Math Error: log is only valid for positive values.");
+        }
         nums.push(applyOp(left, right, op));
     }
 
     private int getPrecedence(String op) {
         return switch (op) {
-            case "^" -> 3;
+            case "^", "#" -> 3;
             case "*", "/" -> 2;
             case "+", "-" -> 1;
             default -> 0;
@@ -352,6 +361,7 @@ public class Calculator {
 
     private Double applyOp(double left, double right, String op) {
         return switch(op) {
+            case "#" -> Math.log(right);
             case "^" -> Math.pow(left, right);
             case "*" -> left * right;
             case "/" -> left / right;
@@ -373,6 +383,11 @@ public class Calculator {
                 tokens.add("^");
                 i += 2; // move index to the 'p' in "exp"
             }
+            else if (expr.charAt(i) == 'l') {
+                tokens.add("l");   // Dummy operand so we can use existing logic in evaluateStack
+                tokens.add("#");   // Operator representing log
+                i += 2;            // move index to the 'g' in "log"
+            }
             else if (Character.isDigit(expr.charAt(i)) || expr.charAt(i) == '.') {
                 StringBuilder num = new StringBuilder();
                 while (i < expr.length() && (Character.isDigit(expr.charAt(i)) || expr.charAt(i) == '.')) {
@@ -390,7 +405,7 @@ public class Calculator {
     }
 
     private boolean isNumber(String value) {
-        if (value.equals("e")) {
+        if (value.equals("e") || value.equals("l")) {
             return true;
         }
 
