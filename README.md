@@ -3,6 +3,12 @@
 ## How to run the latest release:
 1. Open up docker desktop
 2. Open up terminal:
+   1. Type in "docker run --name=calculator-web-app-container --rm -d -p 8080:8080 goleccc/calculator-web-app:release2"
+3. Go to http://localhost:8080/calculator in your browser
+
+## How to run the first release:
+1. Open up docker desktop
+2. Open up terminal:
    1. Type in "docker run --name=calculator-web-app-container --rm -d -p 8080:8080 goleccc/calculator-web-app:release1"
 3. Go to http://localhost:8080/calculator in your browser
 
