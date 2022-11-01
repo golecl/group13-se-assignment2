@@ -22,7 +22,7 @@ class CalculatorApplicationTests {
         String div0 = "Math Error: division by zero is not defined.";
         String badLog = "Math Error: log is only valid for positive values.";
         String[][] testValues = {{"6/2*(1+2)", "6/(2*(1+2))", "4^4",   "(3+5*8^4.2)/(5+7)", "1/0", "log(9^2/exp(3))", "log(0)", "exp(0)", "181^0", "2/2-2"},
-                                 {"9.0",        "1.0",        "256.0", "2587.073",          div0,   "0.606",           badLog,   "1",       "1",    div0}};
+                                 {"9.0",        "1.0",        "256.0", "2587.073",          div0,   "1.394",           badLog,   "1",       "1",    div0}};
 
         for (int i = 0; i < testValues[0].length; i++) {
             String result = unitTestCalc(testValues[0][i], calc);
